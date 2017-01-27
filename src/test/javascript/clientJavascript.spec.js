@@ -17,9 +17,5 @@ describe('testing basic functions', function(){
         expect(returnKittens()).toBe("kittens");
     });
 
-    ////this test should fail.
-    it('this test should fail!', function(){
-        expect(returnKittens()).toBe("kittens");
-    });
 });
 
