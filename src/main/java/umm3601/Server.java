@@ -3,6 +3,7 @@ package umm3601;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import umm3601.todo.ToDoController;
 import umm3601.user.UserController;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class Server {
         staticFiles.location("/public");
         Gson gson = new Gson();
         UserController userController = new UserController();
+        ToDoController toDoController = new ToDoController();
 
         // Simple example route
         get("/hello", (req, res) -> "Hello World");
@@ -39,6 +41,12 @@ public class Server {
             res.type("application/json");
             String id = req.params("id");
             return gson.toJson(userController.getUser(id));
+        });
+
+        // List todos
+        get("api/todos", (req, res) -> {
+            res.type("application/json");
+            return wrapInJson("toDos", gson.toJsonTree(toDoController.listToDos(req.queryMap().toMap())));
         });
     }
 
