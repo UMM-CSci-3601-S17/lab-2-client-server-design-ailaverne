@@ -18,7 +18,18 @@ public class ToDoController {
     }
 
     public ToDo[] listToDos(Map<String, String[]> queryParams) {
-        return toDos;
+        ToDo[] filteredToDos = toDos;
+
+        if (queryParams.containsKey("owner")) {
+            String owner = queryParams.get("owner")[0];
+            filteredToDos = filterToDosByOwner(filteredToDos, owner);
+        }
+
+        return filteredToDos;
+    }
+
+    ToDo[] filterToDosByOwner(ToDo[] filteredToDos, String owner) {
+        return Arrays.stream(filteredToDos).filter(x -> x.owner.equals(owner)).toArray(ToDo[]::new);
     }
 
 
