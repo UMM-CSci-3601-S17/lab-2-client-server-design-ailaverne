@@ -25,6 +25,11 @@ public class ToDoController {
             filteredToDos = filterToDosByOwner(filteredToDos, owner);
         }
 
+        if (queryParams.containsKey("contains")) {
+            String searchString = queryParams.get("contains")[0];
+            filteredToDos = filterToDosByBodyContents(filteredToDos, searchString);
+        }
+
         return filteredToDos;
     }
 
