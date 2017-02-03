@@ -1,5 +1,6 @@
 package umm3601.todo;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -10,10 +11,17 @@ import static junit.framework.TestCase.assertEquals;
 
 public class FilterToDoListSpec {
 
+    ToDoController toDoController;
+    ToDo[] allToDos;
+
+    @Before
+    public void initialize() throws IOException{
+        toDoController = new ToDoController();
+        allToDos = toDoController.listToDos(new HashMap<>());
+    }
+
     @Test
-    public void filterToDosByOwner() throws IOException {
-        ToDoController toDoController = new ToDoController();
-        ToDo[] allToDos = toDoController.listToDos(new HashMap<>());
+    public void filterToDosByOwner() {
         ToDo[] ownerBarry = toDoController.filterToDosByOwner(allToDos, "Barry");
         assertEquals("Incorrect number of to-dos with owner Barry", 51, ownerBarry.length);
         ToDo[] ownerBlanche = toDoController.filterToDosByOwner(allToDos, "Blanche");
@@ -21,9 +29,7 @@ public class FilterToDoListSpec {
     }
 
     @Test
-    public void filterToDosByCategory() throws IOException {
-        ToDoController toDoController = new ToDoController();
-        ToDo[] allToDos = toDoController.listToDos(new HashMap<>());
+    public void filterToDosByCategory() {
         ToDo[] categoryHomework = toDoController.filterToDosByCategory(allToDos, "homework");
         assertEquals("Incorrect number of to-dos with category homework", 79, categoryHomework.length);
         ToDo[] categoryVideoGames = toDoController.filterToDosByCategory(allToDos, "video games");
@@ -31,9 +37,7 @@ public class FilterToDoListSpec {
     }
 
     @Test
-    public void filterToDosByBodyContents() throws IOException {
-        ToDoController toDoController = new ToDoController();
-        ToDo[] allToDos = toDoController.listToDos(new HashMap<>());
+    public void filterToDosByBodyContents() {
         ToDo[] bodyHasNisi = toDoController.filterToDosByBodyContents(allToDos, "nisi");
         assertEquals("Incorrect number of to-dos with \"nisi\" in the body", 77, bodyHasNisi.length);
         ToDo[] bodyHasReprehenderit = toDoController.filterToDosByBodyContents(allToDos, "Reprehenderit");
