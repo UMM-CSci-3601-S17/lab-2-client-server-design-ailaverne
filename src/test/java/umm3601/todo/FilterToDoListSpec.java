@@ -11,8 +11,8 @@ import static junit.framework.TestCase.assertEquals;
 
 public class FilterToDoListSpec {
 
-    ToDoController toDoController;
-    ToDo[] allToDos;
+    private ToDoController toDoController;
+    private ToDo[] allToDos;
 
     @Before
     public void initialize() throws IOException{
