@@ -44,4 +44,12 @@ public class FilterToDoListSpec {
         assertEquals("Incorrect number of to-dos with \"Reprehenderit\" in the body", 14, bodyHasReprehenderit.length);
     }
 
+    @Test
+    public void filterToDosByStatus() {
+        ToDo[] statusComplete = toDoController.filterToDosByStatus(allToDos, true);
+        assertEquals("Incorrect number of to-dos with status complete", 143, statusComplete.length);
+        ToDo[] statusIncomplete = toDoController.filterToDosByStatus(allToDos, false);
+        assertEquals("Incorrect number of to-dos with status incomplete", 157, statusIncomplete.length);
+    }
+
 }

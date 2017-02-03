@@ -35,6 +35,17 @@ public class ToDoController {
             filteredToDos = filterToDosByBodyContents(filteredToDos, searchString);
         }
 
+        if (queryParams.containsKey("status")) {
+            String statusString = queryParams.get("status")[0];
+            if (statusString.equals("complete")) {
+                filteredToDos = filterToDosByStatus(filteredToDos, true);
+            } else if (statusString.equals("incomplete")) {
+                filteredToDos = filterToDosByStatus(filteredToDos, false);
+            } else {
+                filteredToDos = new ToDo[0];
+            }
+        }
+
         return filteredToDos;
     }
 
@@ -49,5 +60,9 @@ public class ToDoController {
 
     ToDo[] filterToDosByBodyContents(ToDo[] filteredToDos, String searchString) {
         return Arrays.stream(filteredToDos).filter(x -> x.body.contains(searchString)).toArray(ToDo[]::new);
+    }
+
+    ToDo[] filterToDosByStatus(ToDo[] filteredToDos, boolean status) {
+        return Arrays.stream(filteredToDos).filter(x -> x.status == status).toArray(ToDo[]::new);
     }
 }
