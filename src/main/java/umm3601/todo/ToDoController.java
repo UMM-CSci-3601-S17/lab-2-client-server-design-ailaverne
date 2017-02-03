@@ -25,11 +25,20 @@ public class ToDoController {
             filteredToDos = filterToDosByOwner(filteredToDos, owner);
         }
 
+        if (queryParams.containsKey("category")) {
+            String category = queryParams.get("category")[0];
+            filteredToDos = filterToDosByCategory(filteredToDos, category);
+        }
+
         return filteredToDos;
     }
 
     ToDo[] filterToDosByOwner(ToDo[] filteredToDos, String owner) {
         return Arrays.stream(filteredToDos).filter(x -> x.owner.equals(owner)).toArray(ToDo[]::new);
+    }
+
+    ToDo[] filterToDosByCategory(ToDo[] filteredToDos, String category) {
+        return Arrays.stream(filteredToDos).filter(x -> x.category.equals(category)).toArray(ToDo[]::new);
     }
 
 
