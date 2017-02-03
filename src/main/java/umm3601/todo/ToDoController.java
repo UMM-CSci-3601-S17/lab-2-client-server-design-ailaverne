@@ -32,5 +32,7 @@ public class ToDoController {
         return Arrays.stream(filteredToDos).filter(x -> x.owner.equals(owner)).toArray(ToDo[]::new);
     }
 
-
+    ToDo[] filterToDosByBodyContents(ToDo[] filteredToDos, String searchString) {
+        return Arrays.stream(filteredToDos).filter(x -> x.body.contains(searchString)).toArray(ToDo[]::new);
+    }
 }

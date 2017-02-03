@@ -20,4 +20,14 @@ public class FilterToDoListSpec {
         assertEquals("Incorrect number of to-dos with owner Blanche", 43, ownerBlanche.length);
     }
 
+    @Test
+    public void filterToDosByBodyContents() throws IOException {
+        ToDoController toDoController = new ToDoController();
+        ToDo[] allToDos = toDoController.listToDos(new HashMap<>());
+        ToDo[] bodyHasNisi = toDoController.filterToDosByBodyContents(allToDos, "nisi");
+        assertEquals("Incorrect number of to-dos with \"nisi\" in the body", 77, bodyHasNisi.length);
+        ToDo[] bodyHasReprehenderit = toDoController.filterToDosByBodyContents(allToDos, "Reprehenderit");
+        assertEquals("Incorrect number of to-dos with \"Reprehenderit\" in the body", 14, bodyHasReprehenderit.length);
+    }
+
 }
