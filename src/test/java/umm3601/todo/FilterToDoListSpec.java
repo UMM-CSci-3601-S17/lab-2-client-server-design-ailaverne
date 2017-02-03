@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNull;
 
 public class FilterToDoListSpec {
 
@@ -50,6 +51,18 @@ public class FilterToDoListSpec {
         assertEquals("Incorrect number of to-dos with status complete", 143, statusComplete.length);
         ToDo[] statusIncomplete = toDoController.filterToDosByStatus(allToDos, false);
         assertEquals("Incorrect number of to-dos with status incomplete", 157, statusIncomplete.length);
+    }
+
+    @Test
+    public void selectToDoByID() {
+        ToDo id0 = toDoController.getToDo("58895985186754887e0381f5");
+        assertEquals("Wrong owner", "Blanche", id0.owner);
+        assertEquals("Wrong ID", "58895985186754887e0381f5", id0._id);
+        assertEquals("Wrong status", true, id0.status);
+        assertEquals("Wrong category", "software design", id0.category);
+
+        ToDo id1 = toDoController.getToDo("8895985186754887e0381f9");
+        assertNull(id1);
     }
 
 }

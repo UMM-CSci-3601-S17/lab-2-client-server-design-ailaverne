@@ -48,6 +48,13 @@ public class Server {
             res.type("application/json");
             return wrapInJson("toDos", gson.toJsonTree(toDoController.listToDos(req.queryMap().toMap())));
         });
+
+        // Get specific to-do
+        get("api/todos/:id", (req, res) -> {
+            res.type("application/json");
+            String id = req.params("id");
+            return gson.toJson(toDoController.getToDo(id));
+        });
     }
 
     public static JsonObject wrapInJson(String name, JsonElement jsonElement) {

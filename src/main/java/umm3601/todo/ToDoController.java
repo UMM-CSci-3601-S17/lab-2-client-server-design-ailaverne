@@ -37,12 +37,16 @@ public class ToDoController {
 
         if (queryParams.containsKey("status")) {
             String statusString = queryParams.get("status")[0];
-            if (statusString.equals("complete")) {
-                filteredToDos = filterToDosByStatus(filteredToDos, true);
-            } else if (statusString.equals("incomplete")) {
-                filteredToDos = filterToDosByStatus(filteredToDos, false);
-            } else {
-                filteredToDos = new ToDo[0];
+            switch (statusString) {
+                case "complete":
+                    filteredToDos = filterToDosByStatus(filteredToDos, true);
+                    break;
+                case "incomplete":
+                    filteredToDos = filterToDosByStatus(filteredToDos, false);
+                    break;
+                default:
+                    filteredToDos = new ToDo[0];
+                    break;
             }
         }
 
@@ -64,5 +68,9 @@ public class ToDoController {
 
     ToDo[] filterToDosByStatus(ToDo[] filteredToDos, boolean status) {
         return Arrays.stream(filteredToDos).filter(x -> x.status == status).toArray(ToDo[]::new);
+    }
+
+    public ToDo getToDo(String id) {
+        return Arrays.stream(toDos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
     }
 }
