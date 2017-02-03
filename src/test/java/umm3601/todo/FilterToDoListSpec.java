@@ -29,4 +29,15 @@ public class FilterToDoListSpec {
         ToDo[] categoryVideoGames = toDoController.filterToDosByCategory(allToDos, "video games");
         assertEquals("Incorrect number of to-dos with category video games", 71, categoryVideoGames.length);
     }
+
+    @Test
+    public void filterToDosByBodyContents() throws IOException {
+        ToDoController toDoController = new ToDoController();
+        ToDo[] allToDos = toDoController.listToDos(new HashMap<>());
+        ToDo[] bodyHasNisi = toDoController.filterToDosByBodyContents(allToDos, "nisi");
+        assertEquals("Incorrect number of to-dos with \"nisi\" in the body", 77, bodyHasNisi.length);
+        ToDo[] bodyHasReprehenderit = toDoController.filterToDosByBodyContents(allToDos, "Reprehenderit");
+        assertEquals("Incorrect number of to-dos with \"Reprehenderit\" in the body", 14, bodyHasReprehenderit.length);
+    }
+
 }

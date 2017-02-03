@@ -30,6 +30,11 @@ public class ToDoController {
             filteredToDos = filterToDosByCategory(filteredToDos, category);
         }
 
+        if (queryParams.containsKey("contains")) {
+            String searchString = queryParams.get("contains")[0];
+            filteredToDos = filterToDosByBodyContents(filteredToDos, searchString);
+        }
+
         return filteredToDos;
     }
 
@@ -42,4 +47,7 @@ public class ToDoController {
     }
 
 
+    ToDo[] filterToDosByBodyContents(ToDo[] filteredToDos, String searchString) {
+        return Arrays.stream(filteredToDos).filter(x -> x.body.contains(searchString)).toArray(ToDo[]::new);
+    }
 }
