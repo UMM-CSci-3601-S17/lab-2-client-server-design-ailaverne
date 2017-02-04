@@ -10,13 +10,33 @@
 <button type="button" id="getAll">Get All To-Dos</button>
 
 <form onsubmit="return false;">
+    Owner:
+    <input type="text" id="ownerBox"/>
+    <br/>
+    <button onclick="completeQueryOwner()">Owner Complete Query</button>
+    <br/>
+
     Status:
     <select name="status" id="statusBox">
         <option value="complete">Complete</option>
         <option value="incomplete">Incomplete</option>
     </select>
     <br/>
-    <button onclick="completeQuery()">Complete Query</button>
+    <button onclick="completeQueryStatus()">Status Complete Query</button>
+    <br/>
+
+    Body Contents:
+    <input type="text" id="bodyBox"/>
+    <br/>
+    <button onclick="completeQueryBody()">Body Contents Complete Query</button>
+    <br/>
+
+    Category:
+    <input type="text" id="categoryBox"/>
+    <br/>
+    <button onclick="completeQueryCategory()">Category Complete Query</button>
+    <br/>
+
 </form>
 
 <hr/>
