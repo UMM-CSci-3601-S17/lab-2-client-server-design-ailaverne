@@ -27,6 +27,8 @@ public class ToDoController {
                 case "owner":
                     orderToDosByOwner(toDos);
                     break;
+                case "body":
+                    orderToDosByBody(toDos);
                 default:
                     break;
             }
@@ -89,5 +91,9 @@ public class ToDoController {
 
     void orderToDosByOwner(ToDo[] toDos) {
         Arrays.sort(toDos, Comparator.comparing(x -> x.owner));
+    }
+
+    void orderToDosByBody(ToDo[] toDos) {
+        Arrays.sort(toDos, Comparator.comparing(x -> x.body));
     }
 }
