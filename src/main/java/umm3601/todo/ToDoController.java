@@ -72,6 +72,19 @@ public class ToDoController {
             }
         }
 
+        // Limiting
+        if (queryParams.containsKey("limit")) {
+            String limitString = queryParams.get("limit")[0];
+            try {
+                long limitLong = Long.parseLong(limitString);
+                filteredToDos = limitToDos(filteredToDos, limitLong);
+            } catch (NumberFormatException e) {
+                filteredToDos = new ToDo[0];
+            } catch (IllegalArgumentException e) {
+                filteredToDos = new ToDo[0];
+            }
+        }
+
         return filteredToDos;
     }
 
@@ -110,5 +123,9 @@ public class ToDoController {
 
     ToDo[] orderToDosByStatus(ToDo[] toDos) {
         return Arrays.stream(toDos).sorted(Comparator.comparing(x -> x.status)).toArray(ToDo[]::new);
+    }
+
+    ToDo[] limitToDos(ToDo[] filteredToDos, long limit) {
+        return Arrays.stream(filteredToDos).limit(limit).toArray(ToDo[]::new);
     }
 }

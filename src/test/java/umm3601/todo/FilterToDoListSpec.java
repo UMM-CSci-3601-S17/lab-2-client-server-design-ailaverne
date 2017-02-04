@@ -65,4 +65,12 @@ public class FilterToDoListSpec {
         assertNull(id1);
     }
 
+    @Test
+    public void limitToDo() {
+        ToDo[] returns5Elements = toDoController.limitToDos(allToDos,5);
+        assertEquals("Wrong number of to-dos returned", 5, returns5Elements.length);
+        ToDo[] returns10Elements = toDoController.limitToDos(allToDos,10);
+        assertEquals("Wrong number of to-dos returned", 10, returns10Elements.length);
+    }
+
 }
