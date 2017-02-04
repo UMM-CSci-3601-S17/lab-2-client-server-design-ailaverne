@@ -25,10 +25,10 @@ public class ToDoController {
         if (queryParams.containsKey("orderBy")) {
             switch (queryParams.get("orderBy")[0]) {
                 case "owner":
-                    orderToDosByOwner(toDos);
+                    filteredToDos = orderToDosByOwner(toDos);
                     break;
                 case "body":
-                    orderToDosByBody(toDos);
+                    filteredToDos = orderToDosByBody(toDos);
                 default:
                     break;
             }
@@ -89,11 +89,11 @@ public class ToDoController {
         return Arrays.stream(toDos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
     }
 
-    void orderToDosByOwner(ToDo[] toDos) {
-        Arrays.sort(toDos, Comparator.comparing(x -> x.owner));
+    ToDo[] orderToDosByOwner(ToDo[] toDos) {
+        return  Arrays.stream(toDos).sorted(Comparator.comparing(x -> x.owner)).toArray(ToDo[]::new);
     }
 
-    void orderToDosByBody(ToDo[] toDos) {
-        Arrays.sort(toDos, Comparator.comparing(x -> x.body));
+    ToDo[] orderToDosByBody(ToDo[] toDos) {
+        return Arrays.stream(toDos).sorted(Comparator.comparing(x -> x.body)).toArray(ToDo[]::new);
     }
 }
