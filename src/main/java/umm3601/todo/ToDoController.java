@@ -29,6 +29,7 @@ public class ToDoController {
                     break;
                 case "body":
                     filteredToDos = orderToDosByBody(toDos);
+                    break;
                 default:
                     break;
             }
