@@ -33,6 +33,8 @@ public class ToDoController {
                 case "category":
                     filteredToDos = orderToDosByCategory(toDos);
                     break;
+                case "status":
+                    filteredToDos = orderToDosByStatus(toDos);
                 default:
                     break;
             }
@@ -103,5 +105,9 @@ public class ToDoController {
 
     ToDo[] orderToDosByCategory(ToDo[] toDos) {
         return Arrays.stream(toDos).sorted(Comparator.comparing(x -> x.category)).toArray(ToDo[]::new);
+    }
+
+    ToDo[] orderToDosByStatus(ToDo[] toDos) {
+        return Arrays.stream(toDos).sorted(Comparator.comparing(x -> x.status)).toArray(ToDo[]::new);
     }
 }

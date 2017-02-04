@@ -43,4 +43,11 @@ public class OrderToDoList {
         assertEquals("First element is wrong", "groceries", sorted[0].category);
         assertEquals("Last message is wrong", "video games", sorted[sorted.length - 1].category);
     }
+
+    @Test
+    public void orderToDosByStatus() {
+        ToDo[] sorted = toDoController.orderToDosByStatus(allToDos);
+        assertEquals("First element is wrong", false, sorted[0].status);
+        assertEquals("Last element is wrong", true, sorted[sorted.length - 1].status);
+    }
 }
