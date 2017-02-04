@@ -36,4 +36,11 @@ public class OrderToDoList {
               "Voluptate sit velit occaecat pariatur. Qui adipisicing ipsum incididunt laborum.",
                 sorted[sorted.length - 1].body);
     }
+
+    @Test
+    public void orderToDosByCategory() {
+        ToDo[] sorted = toDoController.orderToDosByCategory(allToDos);
+        assertEquals("First element is wrong", "groceries", sorted[0].category);
+        assertEquals("Last message is wrong", "video games", sorted[sorted.length - 1].category);
+    }
 }

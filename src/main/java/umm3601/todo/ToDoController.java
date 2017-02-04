@@ -30,6 +30,9 @@ public class ToDoController {
                 case "body":
                     filteredToDos = orderToDosByBody(toDos);
                     break;
+                case "category":
+                    filteredToDos = orderToDosByCategory(toDos);
+                    break;
                 default:
                     break;
             }
@@ -96,5 +99,9 @@ public class ToDoController {
 
     ToDo[] orderToDosByBody(ToDo[] toDos) {
         return Arrays.stream(toDos).sorted(Comparator.comparing(x -> x.body)).toArray(ToDo[]::new);
+    }
+
+    ToDo[] orderToDosByCategory(ToDo[] toDos) {
+        return Arrays.stream(toDos).sorted(Comparator.comparing(x -> x.category)).toArray(ToDo[]::new);
     }
 }
