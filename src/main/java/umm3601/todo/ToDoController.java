@@ -87,8 +87,7 @@ public class ToDoController {
         return Arrays.stream(toDos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
     }
 
-    ToDo[] orderToDosByOwner(ToDo[] toDos) {
+    void orderToDosByOwner(ToDo[] toDos) {
         Arrays.sort(toDos, Comparator.comparing(x -> x.owner));
-        return toDos;
     }
 }
