@@ -73,4 +73,18 @@ public class FilterToDoListSpec {
         assertEquals("Wrong number of to-dos returned", 10, returns10Elements.length);
     }
 
+    @Test
+    public void combinationsOfFilters() {
+        HashMap<String, String[]> queryParams = new HashMap<>();
+        queryParams.put("category", new String[]{"video games"});
+        queryParams.put("owner", new String[]{"Barry"});
+        queryParams.put("status", new String[]{"complete"});
+        queryParams.put("contains", new String[]{"commodo"});
+
+        ToDo[] complexQuery = toDoController.listToDos(queryParams);
+        assertEquals("Wrong number of results", 1, complexQuery.length);
+        assertEquals("Wrong ID", "58895985485047521cea9a40", complexQuery[0]._id);
+
+    }
+
 }
