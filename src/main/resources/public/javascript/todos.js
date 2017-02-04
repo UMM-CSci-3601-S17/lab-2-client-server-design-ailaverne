@@ -13,74 +13,34 @@ window.onload = function() {
     element.addEventListener("click", getAllToDos, true);
 };
 
+var completeQuery = function() {
+    var queryString = "?";
+
+    if (document.getElementById("ownerCheckbox").checked) {
+        queryString += "&owner=" + document.getElementById("ownerBox").value;
+    }
+
+    if (document.getElementById("statusCheckbox").checked) {
+        queryString += "&status=" + document.getElementById("statusBox").value;
+    }
+
+    if (document.getElementById("bodyCheckbox").checked) {
+        queryString += "&contains=" + document.getElementById("bodyBox").value;
+    }
+
+    if (document.getElementById("categoryCheckbox").checked) {
+        queryString += "&category=" + document.getElementById("categoryBox").value;
+    }
+
+    getToDos(queryString);
+};
+
+
 /**
  * Function to get all the to-dos!
  */
 var getAllToDos = function() {
-    var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos", function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-    });
-};
-
-/**
- * Function to filter the to-dos by owner!
- */
-var filterByOwner = function(owner) {
-    var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos?owner="+owner, function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-    });
-};
-
-var completeQueryOwner = function() {
-    var ownerValue = document.getElementById("ownerBox").value;
-    filterByOwner(ownerValue);
-};
-
-/**
- * Function to filter the to-dos by status!
- */
-var filterByStatus = function(status) {
-    var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos?status="+status, function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-    });
-};
-
-var completeQueryStatus = function() {
-    var statusValue = document.getElementById("statusBox").value;
-    filterByStatus(statusValue);
-};
-
-/**
- * Function to filter the to-dos by body contents!
- */
-var filterByBody = function(body) {
-    var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos?contains="+body, function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-    });
-};
-
-var completeQueryBody = function() {
-    var bodyValue = document.getElementById("bodyBox").value;
-    filterByBody(bodyValue);
-};
-
-/**
- * Function to filter the to-dos by category!
- */
-var filterByCategory = function(category) {
-    var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos?category="+category, function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-    });
-};
-
-var completeQueryCategory = function() {
-    var categoryValue = document.getElementById("categoryBox").value;
-    filterByCategory(categoryValue);
+    getToDos("");
 };
 
 /**
@@ -88,9 +48,12 @@ var completeQueryCategory = function() {
  */
 var fetchToDoByID = function() {
     var id = document.getElementById("idBox").value;
+    getToDos("/" + id);
+};
 
+var getToDos = function(query) {
     var HttpThingy = new HttpClient();
-    HttpThingy.get("/api/todos/"+id, function(returned_json){
+    HttpThingy.get("/api/todos" + query, function(returned_json){
         document.getElementById('jsonDump').innerHTML = returned_json;
     });
 };

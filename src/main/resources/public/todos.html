@@ -19,32 +19,30 @@
 <hr/>
 
 <form onsubmit="return false;">
+    <input type="checkbox" id="ownerCheckbox">
     Owner:
     <input type="text" id="ownerBox"/>
     <br/>
-    <button onclick="completeQueryOwner()">Owner Complete Query</button>
-    <br/>
 
+    <input type="checkbox" id="statusCheckbox">
     Status:
     <select name="status" id="statusBox">
         <option value="complete">Complete</option>
         <option value="incomplete">Incomplete</option>
     </select>
     <br/>
-    <button onclick="completeQueryStatus()">Status Complete Query</button>
-    <br/>
 
+    <input type="checkbox" id="bodyCheckbox">
     Body Contents:
     <input type="text" id="bodyBox"/>
     <br/>
-    <button onclick="completeQueryBody()">Body Contents Complete Query</button>
-    <br/>
 
+    <input type="checkbox" id="categoryCheckbox">
     Category:
     <input type="text" id="categoryBox"/>
     <br/>
-    <button onclick="completeQueryCategory()">Category Complete Query</button>
-    <br/>
+
+    <button onclick="completeQuery()">Complete Query</button>
 
 </form>
 
