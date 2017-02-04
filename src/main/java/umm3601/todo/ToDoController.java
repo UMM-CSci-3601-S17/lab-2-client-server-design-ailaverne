@@ -75,8 +75,14 @@ public class ToDoController {
         // Limiting
         if (queryParams.containsKey("limit")) {
             String limitString = queryParams.get("limit")[0];
-            long limitLong = Long.parseLong(limitString);
-            filteredToDos = limitToDos(filteredToDos, limitLong);
+            try {
+                long limitLong = Long.parseLong(limitString);
+                filteredToDos = limitToDos(filteredToDos, limitLong);
+            } catch (NumberFormatException e) {
+                filteredToDos = new ToDo[0];
+            } catch (IllegalArgumentException e) {
+                filteredToDos = new ToDo[0];
+            }
         }
 
         return filteredToDos;
