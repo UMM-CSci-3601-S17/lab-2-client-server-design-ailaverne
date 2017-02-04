@@ -9,6 +9,11 @@
 
 <button type="button" id="getAll">Get All To-Dos</button>
 
+<form onsubmit="return false;">
+    Status: <input type="text" name="status-box" id="statusBox"><br>
+    <input type="submit" value="Complete Query" onclick="completeQuery()">
+</form>
+
 <hr/>
 
 <div id="jsonDump" style="margin-top:20px"> Json will go here </div>

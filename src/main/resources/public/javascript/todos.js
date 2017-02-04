@@ -24,6 +24,21 @@ var getAllToDos = function() {
 }
 
 /**
+ * Function to filter the to-dos by status!
+ */
+var filterByStatus = function(status) {
+    var HttpThingy = new HttpClient();
+    HttpThingy.get("/api/todos?status="+status, function(returned_json){
+        document.getElementById('jsonDump').innerHTML = returned_json;
+    });
+}
+
+var completeQuery = function() {
+    var statusValue = document.getElementById("statusBox").value;
+    filterByStatus(statusValue);
+}
+
+/**
  * Wrapper to make generating http requests easier. Should maybe be moved
  * somewhere else in the future!.
  *
