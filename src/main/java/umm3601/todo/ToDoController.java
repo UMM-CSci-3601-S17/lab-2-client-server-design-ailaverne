@@ -35,6 +35,7 @@ public class ToDoController {
                     break;
                 case "status":
                     filteredToDos = orderToDosByStatus(toDos);
+                    break;
                 default:
                     break;
             }
