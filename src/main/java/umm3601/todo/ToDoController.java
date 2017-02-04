@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
 
 public class ToDoController {
@@ -20,6 +21,18 @@ public class ToDoController {
     public ToDo[] listToDos(Map<String, String[]> queryParams) {
         ToDo[] filteredToDos = toDos;
 
+        // Ordering
+        if (queryParams.containsKey("orderBy")) {
+            switch (queryParams.get("orderBy")[0]) {
+                case "owner":
+                    orderToDosByOwner(toDos);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // Filtering
         if (queryParams.containsKey("owner")) {
             String owner = queryParams.get("owner")[0];
             filteredToDos = filterToDosByOwner(filteredToDos, owner);
@@ -72,5 +85,10 @@ public class ToDoController {
 
     public ToDo getToDo(String id) {
         return Arrays.stream(toDos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
+    }
+
+    ToDo[] orderToDosByOwner(ToDo[] toDos) {
+        Arrays.sort(toDos, Comparator.comparing(x -> x.owner));
+        return toDos;
     }
 }
