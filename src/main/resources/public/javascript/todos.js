@@ -84,6 +84,18 @@ var completeQueryCategory = function() {
 }
 
 /**
+ * Function to fetch a single to-do by ID
+ */
+var fetchToDoByID = function() {
+    var id = document.getElementById("idBox").value;
+
+    var HttpThingy = new HttpClient();
+    HttpThingy.get("/api/todos/"+id, function(returned_json){
+        document.getElementById('jsonDump').innerHTML = returned_json;
+    });
+}
+
+/**
  * Wrapper to make generating http requests easier. Should maybe be moved
  * somewhere else in the future!.
  *

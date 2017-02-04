@@ -9,6 +9,15 @@
 
 <button type="button" id="getAll">Get All To-Dos</button>
 
+<hr/>
+
+<form onsubmit="return false;">
+    ID:
+    <input type="text" id="idBox"/>
+    <button onclick="fetchToDoByID()">Fetch By ID</button>
+</form>
+<hr/>
+
 <form onsubmit="return false;">
     Owner:
     <input type="text" id="ownerBox"/>
