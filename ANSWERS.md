@@ -45,3 +45,7 @@ When the button is pressed, it calls a non-existent JavaScript function.
 
 When we type `http://localhost:4567/api/users?age=35` in the address bar, our browser sends GET request for `users?age=35`
 to the domain `localhost:4567`. As discussed earlier, this results in the server send JSON as a response.
+
+#### Where is the client-side JavaScript defined? Name the file(s) in which it is used.
+
+It is defined in `resources/public/javascript/users.js` and used in `resources/public/users.html`.
