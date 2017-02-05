@@ -32,3 +32,10 @@ It provides a straightforward interface for the `Server.class` to query the `use
 
 Users get `404 Not found` page because the route does not exist in Spark. We added a route to Spark in order for it to return the
 string "Meow".
+
+#### Describe the contents of the public folder
+- `about.html`: It is a simple HTML file that contains some text and links.
+- `index.html`: It is the landing page for the website. It is an HTML file that has links, a picture, and a button. 
+When the button is pressed, it calls a non-existent JavaScript function. 
+- `users.html`: When the button is clicked, a JavaScript is run that fetches some data from the server and places it in the 
+`<div>` with `id="jsonDump"`.
