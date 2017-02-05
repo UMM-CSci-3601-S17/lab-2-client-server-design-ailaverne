@@ -14,7 +14,12 @@ a bunch of `.class` files that we can just build from our `.java` files.
 
 ## Explain what what happens when a user accesses each of the following URLs:
 
-- `users`
-- `api/users`
-- `api/users?age=25`
-- `api/users/588935f5de613130e931ffd5`
+- `users`: Spark redirects the client to the `users.html` page which lets the visitor look at users.
+- `api/users`: It prompts Spark to use `userController` and `gson` to generate JSON and return it to the client.
+- `api/users?age=25`: This matches the route on line 37 of `Server.java`. Spark interprets the `?age=25` as a 
+   query and uses it to build a map where `age` is associated with `[25]` which gets passed off to `userController`.
+- `api/users/588935f5de613130e931ffd5`: This matches the route on line 43 of `Server.java`. Spark uses 
+  `api/users/:id` to associate the parameter name `id` with the value `588935f5de613130e931ffd5` and this value
+  then gets used to fetch a user via `userController`.
+   
+   
