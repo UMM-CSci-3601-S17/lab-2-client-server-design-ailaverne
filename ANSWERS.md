@@ -10,6 +10,9 @@ a bunch of `.class` files that we can just build from our `.java` files.
 
 ## What is the purpose of the `umm3601.Server` class?
 
+It sets up all the routes in Spark in order for users to interact with the files in `resources/public`
+and the `ToDoController` and `UserController` classes.
+
 ## What is the purpose of the `umm3601.user.UserController` class??
 
 ## Explain what what happens when a user accesses each of the following URLs:
