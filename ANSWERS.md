@@ -1,23 +1,23 @@
 # Answers
 
-## What is the purpose of `.gitignore`?
+#### What is the purpose of `.gitignore`?
 
 It lets us avoid committing files that are automatically downloaded/created by gradle 
 or other build tools. For example, we don't want the `build/` directory because it contains 
 a bunch of `.class` files that we can just build from our `.java` files.
 
-## Explain what a route is?
+#### Explain what a route is?
 
-## What is the purpose of the `umm3601.Server` class?
+#### What is the purpose of the `umm3601.Server` class?
 
 It sets up all the routes in Spark in order for users to interact with the files in `resources/public`
 and the `ToDoController` and `UserController` classes.
 
-## What is the purpose of the `umm3601.user.UserController` class?
+#### What is the purpose of the `umm3601.user.UserController` class?
 
 It provides a straightforward interface for the `Server.class` to query the `users.json` file.
 
-## Explain what what happens when a user accesses each of the following URLs:
+#### Explain what what happens when a user accesses each of the following URLs:
 
 - `users`: Spark redirects the client to the `users.html` page which lets the visitor look at users.
 - `api/users`: It prompts Spark to use `userController` and `gson` to generate JSON and return it to the client.
@@ -27,7 +27,7 @@ It provides a straightforward interface for the `Server.class` to query the `use
   `api/users/:id` to associate the parameter name `id` with the value `588935f5de613130e931ffd5` and this value
   then gets used to fetch a user via `userController`.
    
-## What happens when the user accesses the page "kittens"? 
+#### What happens when the user accesses the page "kittens"? 
 *Modify the server code so accessing the page "kittens" results in the text "Meow". Describe what you did and how it worked.*
 
 Users get `404 Not found` page because the route does not exist in Spark. We added a route to Spark in order for it to return the
