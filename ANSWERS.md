@@ -13,7 +13,9 @@ a bunch of `.class` files that we can just build from our `.java` files.
 It sets up all the routes in Spark in order for users to interact with the files in `resources/public`
 and the `ToDoController` and `UserController` classes.
 
-## What is the purpose of the `umm3601.user.UserController` class??
+## What is the purpose of the `umm3601.user.UserController` class?
+
+It provides a straightforward interface for the `Server.class` to query the `users.json` file.
 
 ## Explain what what happens when a user accesses each of the following URLs:
 
