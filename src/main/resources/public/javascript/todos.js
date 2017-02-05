@@ -32,6 +32,10 @@ var completeQuery = function() {
         queryString += "&category=" + document.getElementById("categoryBox").value;
     }
 
+    if (document.getElementById("orderByCheckbox").checked) {
+        queryString += "&orderBy=" + document.getElementById("orderByBox").value;
+    }
+
     getToDos(queryString);
 };
 
