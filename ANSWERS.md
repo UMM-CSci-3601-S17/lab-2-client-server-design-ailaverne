@@ -27,4 +27,8 @@ It provides a straightforward interface for the `Server.class` to query the `use
   `api/users/:id` to associate the parameter name `id` with the value `588935f5de613130e931ffd5` and this value
   then gets used to fetch a user via `userController`.
    
-   
+## What happens when the user accesses the page "kittens"? 
+*Modify the server code so accessing the page "kittens" results in the text "Meow". Describe what you did and how it worked.*
+
+Users get `404 Not found` page because the route does not exist in Spark. We added a route to Spark in order for it to return the
+string "Meow".

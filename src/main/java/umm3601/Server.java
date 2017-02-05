@@ -58,6 +58,9 @@ public class Server {
             String id = req.params("id");
             return gson.toJson(toDoController.getToDo(id));
         });
+
+        // Kittens
+        get("kittens", (req, res) -> "Meow");
     }
 
     public static JsonObject wrapInJson(String name, JsonElement jsonElement) {
