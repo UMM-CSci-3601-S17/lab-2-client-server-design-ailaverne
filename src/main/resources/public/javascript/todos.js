@@ -36,6 +36,10 @@ var completeQuery = function() {
         queryString += "&orderBy=" + document.getElementById("orderByBox").value;
     }
 
+    if (document.getElementById("limitCheckbox").checked) {
+        queryString += "&limit=" + document.getElementById("limitBox").value;
+    }
+
     getToDos(queryString);
 };
 
