@@ -8,6 +8,9 @@ a bunch of `.class` files that we can just build from our `.java` files.
 
 #### Explain what a route is?
 
+Spark uses "routes" to associate some method with a URL-matching pattern. When Spark receives a HTTP request that 
+matches the URL-matching pattern that you've defined, it calls the method that you told it to. 
+
 #### What is the purpose of the `umm3601.Server` class?
 
 It sets up all the routes in Spark in order for users to interact with the files in `resources/public`
