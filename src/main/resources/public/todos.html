@@ -19,32 +19,32 @@
 <hr/>
 
 <form onsubmit="return false;">
-    <input type="checkbox" id="ownerCheckbox">
+    <input type="checkbox" id="owner">
     Owner:
-    <input type="text" id="ownerBox"/>
+    <input type="text"/>
     <br/>
 
-    <input type="checkbox" id="statusCheckbox">
+    <input type="checkbox" id="status">
     Status:
-    <select name="status" id="statusBox">
+    <select name="status">
         <option value="complete">Complete</option>
         <option value="incomplete">Incomplete</option>
     </select>
     <br/>
 
-    <input type="checkbox" id="bodyCheckbox">
+    <input type="checkbox" id="contains">
     Body Contents:
-    <input type="text" id="bodyBox"/>
+    <input type="text"/>
     <br/>
 
-    <input type="checkbox" id="categoryCheckbox">
+    <input type="checkbox" id="category">
     Category:
-    <input type="text" id="categoryBox"/>
+    <input type="text"/>
     <br/>
 
-    <input type="checkbox" id="orderByCheckbox">
+    <input type="checkbox" id="orderBy">
     Order Results By:
-    <select name="orderBy" id="orderByBox">
+    <select name="orderBy">
         <option value="body">Body</option>
         <option value="category">Category</option>
         <option value="owner">Owner</option>
@@ -52,9 +52,9 @@
     </select>
     <br/>
 
-    <input type="checkbox" id="limitCheckbox">
+    <input type="checkbox" id="limit">
     Max Results To Be Displayed:
-    <input type="number" id="limitBox" min="1"/>
+    <input type="number" min="1"/>
     <br/>
 
     <button onclick="completeQuery()">Complete Query</button>

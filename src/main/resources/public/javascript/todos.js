@@ -13,32 +13,24 @@ window.onload = function() {
     element.addEventListener("click", getAllToDos, true);
 };
 
+var checkBoxToQueryString = function (checkbox) {
+    if (checkbox.checked) {
+        return "&" + checkbox.id + "=" + checkbox.nextElementSibling.value;
+    }
+    else {
+        return "";
+    }
+};
+
 var completeQuery = function() {
     var queryString = "?";
 
-    if (document.getElementById("ownerCheckbox").checked) {
-        queryString += "&owner=" + document.getElementById("ownerBox").value;
-    }
-
-    if (document.getElementById("statusCheckbox").checked) {
-        queryString += "&status=" + document.getElementById("statusBox").value;
-    }
-
-    if (document.getElementById("bodyCheckbox").checked) {
-        queryString += "&contains=" + document.getElementById("bodyBox").value;
-    }
-
-    if (document.getElementById("categoryCheckbox").checked) {
-        queryString += "&category=" + document.getElementById("categoryBox").value;
-    }
-
-    if (document.getElementById("orderByCheckbox").checked) {
-        queryString += "&orderBy=" + document.getElementById("orderByBox").value;
-    }
-
-    if (document.getElementById("limitCheckbox").checked) {
-        queryString += "&limit=" + document.getElementById("limitBox").value;
-    }
+    queryString += checkBoxToQueryString(document.getElementById("owner"));
+    queryString += checkBoxToQueryString(document.getElementById("status"));
+    queryString += checkBoxToQueryString(document.getElementById("contains"));
+    queryString += checkBoxToQueryString(document.getElementById("category"));
+    queryString += checkBoxToQueryString(document.getElementById("orderBy"));
+    queryString += checkBoxToQueryString(document.getElementById("limit"));
 
     getToDos(queryString);
 };
